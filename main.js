@@ -1,10 +1,6 @@
-const consultantData = {
-  name: "João Pedro Almeida",
-  email: "joaopedroalmeidasyn@gmail.com",
-  phone: "(21) 98123-7645",
-  address: "Rua General Silveira, 456, Sala 702, Centro, Rio de Janeiro – RJ",
-  cnpj: "69.997.037/0001-32"
-};
+console.log("main.js loaded");
+
+import { consultantData } from './data.js';
 
 // Smooth scrolling for anchor links on the same page
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -47,12 +43,15 @@ function updateInnerHTMLContent(selector, html) {
 
 // Populate consultant data and set title on page load
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOMContentLoaded fired, updating content...");
+
   // Update logo and footer info
   updateTextContent('.logo', `${consultantData.name} | Synergy`);
   updateTextContent('.logo-footer h3', `${consultantData.name} | Synergy`);
   updateTextContent('#footer-phone', `Telefone: ${consultantData.phone}`);
   updateTextContent('#footer-email', `E-mail: ${consultantData.email}`);
   updateTextContent('#footer-address', `Endereço: ${consultantData.address}`);
+  updateTextContent('#footer-cep', `CEP: ${consultantData.cep}`);
   updateTextContent('#footer-cnpj', `CNPJ: ${consultantData.cnpj}`);
 
   // Set document title dynamically
@@ -62,4 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     document.title = `${consultantData.name} | Synergy - Consultor Parceiro Santander`;
   }
+
+  console.log("Consultant data updated:", consultantData);
 });
